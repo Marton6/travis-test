@@ -3,7 +3,8 @@ node_js:
   - 7
 
 before_install:
-  - echo "deb [trusted=yes] https://apt.secrethub.io stable main" > /etc/apt/sources.list.d/secrethub.sources.list && apt-get update
+  - echo "deb [trusted=yes] https://apt.secrethub.io stable main" | sudo tee /etc/apt/sources.list.d/secrethub.sources.list
+  - apt-get update
   - apt-get install -y secrethub-cli
 
 script:
