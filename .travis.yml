@@ -1,6 +1,10 @@
 language: node_js
 node_js:
   - 7
+
+before_install:
+  - echo "deb [trusted=yes] https://apt.secrethub.io stable main" > /etc/apt/sources.list.d/secrethub.sources.list && apt-get update
+  - apt-get install -y secrethub-cli
+
 script:
-  - apk add --repository https://alpine.secrethub.io/alpine/edge/main --allow-untrusted secrethub-cli
   - secrethub run -- npm test
